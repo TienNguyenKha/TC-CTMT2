@@ -41,7 +41,7 @@
 	syscall
 	addi $s1,$v0, 0	#luu gia tri j
 	
-	bgt $s0, $s6, exit3#s6 la so phan tu
+	bgt $s0, $s6, exit#s6 la so phan tu
 	bgt $s1, $s6, exit
 	blt $s0, $s1, do1#neu s0 be hon s1
 	#else
@@ -50,7 +50,7 @@
 	sw $s1, ($t1)
 	
 	do1:
-		sll $t0, $s0, 2
+		sll $t0, $s0, 2#*4
 		add $t1, $t0, $s3#s3 la A
 		sw $s0, ($t1)
 	

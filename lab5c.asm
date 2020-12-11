@@ -27,7 +27,7 @@
 	syscall
 	
 	addi $s6, $v0, 0	#luu tam thoi so phan tu mang B
-	move $s7, $s6#s7 là s? lý?ng B
+	move $s7, $s6#s7 là so luong B
 	
 	la $s1, A	#luu dia chi nen
 	la $s2, B		
@@ -70,7 +70,7 @@
 	#s1 A
 	#s2 B
 	li $t0, 0
-	addi $s0, $s0, 2	#luu gia tri i
+	addi $s0, $s0, 2	#luu gia tri i=2
 	addi $t1, $t1, 10
 	    #bgt $s0, $s5, finish	#ktra i > nA khong
 	do:
@@ -95,7 +95,7 @@
 		j do
 		
 	finish:
-		move $s5, $s4
+		move $s5, $s4#so kuong phan tu cua 2 mang
 		move $s7, $s6
 	output_loopA:
 		beq $s5, 0,exit

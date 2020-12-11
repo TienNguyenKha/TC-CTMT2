@@ -44,7 +44,7 @@
 	output_loop:
 		beq $s1, 0,exit#s1 là sl phan tu
 		
-		lw $t2, ($t0)	#doc tung phan tu mang vao t2
+		lw $t2, ($t0)	#doc tung phan tu mang vao t2,t0 la dia chi nen
 		li $v0,1
 		move $a0, $t2	
 		syscall
@@ -72,11 +72,22 @@
 		bge $s2, $s3, increase_i#>=
 		move $s2, $s3
 		
-		ble $s4, $s3, increase_i#<=
+		
+	findMIN:
+	    beq $t2, $s0, endfind #neu t2 bang so phan tu thi end
+		add $t1, $t1, 4
+		lw $s3, mang($t1) #phan tu A[i]
+		
+		sub $s7,$s4,$s3
+		#ble $s4, $s3, increase_i#<=
+		bltz $s7,increase_i2
 		move $s4, $s3
 	increase_i:
 		add $t2, $t2, 1
 		j findMAXMIN
+	increase_i2:
+		add $t2, $t2, 1
+		j findMIN
 	endfind:
 		li $v0, 4 
 		la $a0, tbaoMAX
@@ -128,7 +139,7 @@
 	li $s3, 0
 	li $t1, 0
 	findIndex:
-		beq $t5, $t4, endIndex
+		beq $t5, $t4, endIndex #neu t5 bang t4 thi tim ra roi 
 		add $t1, $t1, 4
 		add $t5, $t5, 1
 		j findIndex
